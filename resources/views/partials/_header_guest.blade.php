@@ -11,22 +11,13 @@
             <!-- end of logo //-->
             <!-- Name //-->
             <div class="flex flex-col item-center justify-center">
-                    <div class="text-white font-bold text-2xl font-serif">OORBDA EDMS</div>
-                    <div class="text-white font-semibold font-serif text-xs opacity-80">Electronic Document Management System</div>
+                    <div class="text-white font-bold text-2xl font-serif">O-ORBDA</div>
+                    <div class="text-white font-semibold font-serif text-xs opacity-80">Assets Management System (AMS)</div>
             </div>
             <!-- end of name //-->
         </a>
 
-        @auth
-            <div class="hidden md:flex flex-row items-center px-1"> 
-               
-                <form action="{{ route('staff.auth.logout') }}" method="POST">
-                    @csrf
-                    
-                    <button type="submit" class="flex font-semibold items-center hover:border-b-yellow-100 text-white hover:border-b-4 mx-3 ">Sign Out</button>
-                </form>       
-            </div> 
-        @endauth
+        
        
         
     </div>

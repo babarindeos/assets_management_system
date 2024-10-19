@@ -11,7 +11,11 @@ use App\Http\Controllers\Admin\Admin_DepartmentController;
 use App\Http\Controllers\Admin\Admin_StaffController;
 use App\Http\Controllers\Admin\Admin_DeanController;
 use App\Http\Controllers\Admin\Admin_DirectorateController;
+use App\Http\Controllers\Admin\Admin_AdminDocumentController;
 use App\Http\Controllers\Admin\Admin_DocumentController;
+use App\Http\Controllers\Admin\Admin_AdminCategoryTypeController;
+use App\Http\Controllers\Admin\Admin_AdminCategoryController;
+
 use App\Http\Controllers\Admin\Admin_ProfileController;
 
 use App\Http\Controllers\Admin\Admin_TrackerController;
@@ -22,6 +26,15 @@ use App\Http\Controllers\Admin\Admin_DivisionController;
 use App\Http\Controllers\Admin\Admin_BranchController;
 use App\Http\Controllers\Admin\Admin_SectionController;
 use App\Http\Controllers\Admin\Admin_UnitController;
+
+use App\Http\Controllers\Admin\Admin_LocationController;
+use App\Http\Controllers\Admin\Admin_LocationTypeController;
+
+use App\Http\Controllers\Admin\Admin_LocationUserController;
+
+use App\Http\Controllers\Admin\Admin_AssetCategoryController;
+
+
 
 use App\Http\Controllers\Staff\Staff_AuthController;
 use App\Http\Controllers\Staff\Staff_DashboardController;
@@ -35,6 +48,7 @@ use App\Http\Controllers\Staff\Staff_ProfileController;
 
 
 use App\Http\Controllers\Staff\Staff_CategoryController;
+use App\Http\Controllers\Staff\Staff_AdminDocumentController;
 
 use App\Http\Controllers\PDFController;
 
@@ -76,6 +90,11 @@ Route::prefix('staff')->middleware(['auth', 'staff'])->group(function(){
     
     Route::get('/documents/{document}/show', [Staff_DocumentController::class, 'show'])->name('staff.documents.show');
     Route::get('/documents/mydocuments', [Staff_DocumentController::class, 'mydocuments'])->name('staff.documents.mydocuments');
+
+    // Admin Document
+    Route::get('/admin_documents', [Staff_AdminDocumentController::class, 'index'])->name('staff.admin_documents.index');
+    
+
     
     
     Route::get('/workflows/{document}/flow', [Staff_WorkflowController::class, 'flow'])->name('staff.workflows.flow');
@@ -109,12 +128,21 @@ Route::prefix('staff')->middleware(['auth', 'staff'])->group(function(){
     Route::post('/profile/myprofile/update_avatar', [Staff_ProfileController::class, 'update_avatar'])->name('staff.profile.myprofile.update_avatar');
     
     Route::get('/profile/user/{fileno}', [Staff_ProfileController::class, 'user_profile'])->name('staff.profile.user_profile');
+    Route::get('/profile/user/{email}/user_profile', [Staff_ProfileController::class, 'email_user_profile'])->name('staff.profile.email_user_profile');
+    
     Route::get('/profile/change_password', [Staff_ProfileController::class, 'change_password'])->name('staff.profile.change_password');
     Route::post('/profile/update_password', [Staff_ProfileController::class, 'update_password'])->name('staff.profile.update_password');
+
+    Route::get('/profile/my_signature', [Staff_ProfileController::class, 'my_signature'])->name('staff.profile.my_signature');
+    Route::post('/profile/my_signature', [Staff_ProfileController::class, 'upload_signature'])->name('staff.profile.upload_signature');
+    Route::post('/profile/update_signature', [Staff_ProfileController::class, 'update_signature'])->name('staff.profile.update_signature');
 
     // Categories
     Route::get('/categories/create', [Staff_CategoryController::class, 'create'])->name('staff.categories.create');
     Route::post('/categories/store', [Staff_CategoryController::class, 'store'])->name('staff.categories.store');
+
+
+  
 });
 
 
@@ -232,11 +260,65 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     // Staff
     Route::get('staff', [Admin_StaffController::class, 'index'])->name('admin.staff.index');
     Route::post('staff/select_organ', [Admin_StaffController::class, 'select_organ'])->name('admin.staff.select_organ');
-    Route::get('staff/{organ}/create', [Admin_StaffController::class, 'create'])->name('admin.staff.create');
+    Route::get('staff/create', [Admin_StaffController::class, 'create'])->name('admin.staff.create');
     Route::post('staff/store', [Admin_StaffController::class, 'store'])->name('admin.staff.store');
 
     Route::get('staff/{staff}/edit', [Admin_StaffController::class, 'edit'])->name('admin.staff.edit');
     Route::post('staff/{staff}/update', [Admin_StaffController::class, 'update'])->name('admin.staff.update');
+
+
+    // Location Type
+    Route::get('location_types', [Admin_LocationTypeController::class, "index"])->name('admin.location_types.index');
+    Route::get('location_types/create', [Admin_LocationTypeController::class, "create"])->name('admin.location_types.create');
+    Route::post('location_types/store', [Admin_LocationTypeController::class, "store"])->name('admin.location_types.store');
+    Route::get('location_types/{location_type}/show', [Admin_LocationTypeController::class, 'show'])->name('admin.location_types.show');
+    Route::get('location_types/{location_type}/edit', [Admin_LocationTypeController::class, "edit"])->name('admin.location_types.edit');
+    Route::post('location_types/{location_type}/update', [Admin_LocationTypeController::class, "update"])->name('admin.location_types.update');
+    Route::get('location_types/{location_type}/confirm_delete', [Admin_LocationTypeController::class, 'confirm_delete'])->name('admin.location_types.confirm_delete');
+    Route::post('location_types/{location_type}/destroy', [Admin_LocationController::class, 'destroy'])->name('admin.location_types.destroy');
+
+
+
+
+    // Location
+    Route::get('locations', [Admin_LocationController::class, 'index'])->name('admin.locations.index');
+    Route::get('locations/create', [Admin_LocationController::class, 'create'])->name('admin.locations.create');
+    Route::post('locations/store', [Admin_LocationController::class, 'store'])->name('admin.locations.store');
+    Route::get('locations/{location}/show', [Admin_LocationController::class, 'show'])->name('admin.locations.show');
+    Route::get('locations/{location}/edit', [Admin_LocationController::class, 'edit'])->name('admin.locations.edit');
+    Route::post('locations/{location}/update', [Admin_LocationController::class, 'update'])->name('admin.locations.update');
+    Route::get('locations/{location}/confirm_delete', [Admin_LocationController::class, 'confirm_delete'])->name('admin.locations.confirm_delete');
+    Route::post('locations/{location}/destroy', [Admin_LocationController::class, 'destroy'])->name('admin.locations.destroy');  
+    
+    
+    // Location Users
+    Route::get('location_users/{location}/users', [Admin_LocationUserController::class, 'index'])->name('admin.location_users.index');
+    Route::get('location_users/{location}/create', [Admin_LocationUserController::class, 'create'])->name('admin.location_users.create');
+    Route::post('location_users/{location}/store', [Admin_LocationUserController::class, 'store'])->name('admin.location_users.store');
+    Route::post('location_users/{location}/location/{location_user}/delete', [Admin_LocationUserController::class, 'destroy'])->name('admin.location_users.delete');
+    
+
+
+    // Admin Document Category Type
+    Route::get('admin_category_types', [Admin_AdminCategoryTypeController::class, 'index'])->name('admin.admin_category_types.index');
+    Route::get('admin_category_types/create', [Admin_AdminCategoryTypeController::class, 'create'])->name('admin.admin_category_types.create');
+    Route::post('admin_category_types/store', [Admin_AdminCategoryTypeController::class, 'store'])->name('admin.admin_category_types.store');
+    Route::get('admin_category_types/{admin_category_type}/edit', [Admin_AdminCategoryTypeController::class, 'edit'])->name('admin.admin_category_types.edit');
+    Route::post('admin_category_types/{admin_category_type}/update', [Admin_AdminCategoryTypeController::class, 'update'])->name('admin.admin_category_types.update');
+    Route::get('admin_category_types/{admin_category_type}/show', [Admin_AdminCategoryTypeController::class, 'show'])->name('admin.admin_category_types.show');
+    
+
+
+    // Admin Categories
+    Route::get('admin_categories', [Admin_AdminCategoryController::class, 'index'])->name('admin.admin_categories.index');
+    Route::get('admin_categories/create', [Admin_AdminCategoryController::class, 'create'])->name('admin.admin_categories.create');
+    Route::post('admin_categories/store', [Admin_AdminCategoryController::class, 'store'])->name('admin.admin_categories.store');
+    Route::get('admin_categories/{admin_category}/edit', [Admin_AdminCategoryController::class, 'edit'])->name('admin.admin_categories.edit');
+    Route::post('admin_categories/{admin_category}/update', [Admin_AdminCategoryController::class, 'update'])->name('admin.admin_categories.update');
+
+    //  Admin Documents
+    Route::get('admin_documents', [Admin_AdminDocumentController::class, 'index'])->name('admin.admin_documents.index');
+ 
 
     // Document
     Route::get('documents', [Admin_DocumentController::class, 'index'])->name('admin.documents.index');
@@ -244,6 +326,8 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
 
     // User Profile
     Route::get('/profile/user/{fileno}', [Admin_ProfileController::class, 'user_profile'])->name('admin.profile.user_profile');
+    Route::get('/profile/{email}/user', [Admin_ProfileController::class, 'email_user_profile'])->name('admin.profile.email_user_profile');
+
 
     // Tracker
     Route::get('tracker', [Admin_TrackerController::class, 'index'])->name('admin.tracker.index');
@@ -259,7 +343,15 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     Route::get('dean/assign_dean', [Admin_DeanController::class, 'assign_dean'])->name('admin.deans.assign_dean');
     Route::post('dean/assign_dean', [Admin_DeanController::class, 'store_assign_dean'])->name('admin.deans.store_assign_dean');
 
-    
+
+    // Asset Categories
+    Route::get('asset_categories', [Admin_AssetCategoryController::class, 'index'])->name('admin.asset_categories.index');
+    Route::get('asset_categories/create', [Admin_AssetCategoryController::class, 'create'])->name('admin.asset_categories.create');
+    Route::post('asset_categories/store', [Admin_AssetCategoryController::class, 'store'])->name('admin.asset_categories.store');
+    Route::get('asset_categories/{category}/edit', [Admin_AssetCategoryController::class, 'edit'])->name('admin.asset_categories.edit');
+    Route::post('asset_categories/{category}/update', [Admin_AssetCategoryController::class, 'update'])->name('admin.asset_categories.update');
+    Route::get('asset_categories/{category}/confirm_delete', [Admin_AssetCategoryController::class, 'confirm_delete'])->name('admin.asset_categories.confirm_delete');
+    Route::post('asset_categories/{category}/delete', [Admin_AssetCategoryController::class, 'destroy'])->name('admin.asset_categories.delete');
 });
 
 

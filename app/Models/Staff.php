@@ -11,13 +11,12 @@ class Staff extends Model
 
     protected $fillable = [
         'user_id',
-        'segment_id',
-        'organ_id',
         'fileno',
         'title',
         'surname',
         'firstname',
-        'middlename'
+        'middlename',
+        'role'
     ];
 
 

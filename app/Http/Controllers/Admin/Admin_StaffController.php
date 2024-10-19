@@ -16,6 +16,7 @@ use App\Models\Branch;
 use App\Models\Section;
 use App\Models\Unit;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 use Mail;
 
@@ -40,41 +41,9 @@ class Admin_StaffController extends Controller
 
     }
 
-    public function create($organ){
+    public function create(){
         
-        $segment_id = $organ;
-
-        switch ($organ)
-        {
-            case 1:
-                $organ = "Directorate";
-                $organ_items = Directorate::orderBy('name', 'asc')->get();
-                break;
-            case 2:
-                $organ = "Department";
-                $organ_items = Department::orderBy('name', 'asc')->get();
-                break;
-            case 3:
-                $organ = "Division";
-                $organ_items = Division::orderBy('name', 'asc')->get();
-                break;
-            case 4:
-                $organ = "Branch";
-                $organ_items = Branch::orderBy('name', 'asc')->get();
-                break;                
-            case 5:
-                $organ = "Section";
-                $organ_items = Section::orderBy('name', 'asc')->get();
-                break;
-            case 6:
-                $organ = "Unit";
-                $organ_items = Unit::orderBy('name', 'asc')->get();
-        }
-
-
-
-        return view('admin.staff.create')->with(['segment_id'=>$segment_id, 'organ'=>$organ, 
-                                                 'organ_items'=>$organ_items]);
+       return view('admin.staff.create');
 
     }
 
@@ -86,9 +55,7 @@ class Admin_StaffController extends Controller
 
        // dd($password);
 
-        $formFields = $request->validate([ 
-            'segment_id' => ['required'],          
-            'organ' => ['required'],
+        $formFields = $request->validate([             
             'fileno' => 'required|unique:staff,fileno',
             'title' => 'required',
             'surname' => 'required | string',
@@ -112,7 +79,6 @@ class Admin_StaffController extends Controller
             return redirect()->back()->with($data);
         }
 
-        $formFields['organ_id'] = $formFields['organ'];
         $formFields['surname'] = strtoupper($formFields['surname']);
         $formFields['firstname'] = ucfirst($formFields['firstname']);
         $formFields['middlename'] = ucfirst($formFields['middlename']);
@@ -176,8 +142,8 @@ class Admin_StaffController extends Controller
                             
                             Mail::send('emails.onboarding', $payload, function($message) use($recipient_email, $recipient){
                                 $message->to($recipient_email, $recipient)
-                                        ->subject("Welcome to O-ORBDA EDMS");
-                                $message->from("clearanceinfo@funaab.edu.ng", "O-ORBDA EDMS");
+                                        ->subject("Welcome to O-ORBDA AMS");
+                                $message->from("clearanceinfo@funaab.edu.ng", "O-ORBDA AMS");
                                         
                             });        
 

@@ -9,44 +9,10 @@
                     </div>
                     <div class="flex flex-row w-3/4 justify-end space-x-1">
 
-                            <form action="{{ route('admin.staff.select_organ') }}" method="POST" class="flex flex-row w-full justify-end space-x-1">
-                                @csrf
-                                <!-- Select Organ //-->
-                                <div class="flex flex-col border-red-900 w-[60%] md:w-[40%] py-2">
-                                        
-                                        
-                                    <select name="organ" class="border border-gray-400 bg-gray-50
-                                                                            w-full p-1 px-2 rounded-md 
-                                                                            focus:outline-none
-                                                                            focus:border-blue-500 
-                                                                            focus:ring
-                                                                            focus:ring-blue-100"
-                                                                            
-                                                                            
-                                                                            style="font-family:'Lato';font-size:16px;font-weight:500;"
-                                                                            required
-                                                                            >
-                                                                            <option value=''>-- Select Organ --</option>
-                                                                                    <option value="1">Directorate</option>
-                                                                                    <option value="2">Department</option>
-                                                                                    <option value="3">Division</option>
-                                                                                    <option value="4">Branch</option>
-                                                                                    <option value="5">Section</option>
-                                                                                    <option value="6">Unit</option>                                                              
-                                                                            </select>
-
-                                                                            @error('organ')
-                                                                                <span class="text-red-700 text-sm">
-                                                                                    {{$message}}
-                                                                                </span>
-                                                                            @enderror
-                                    
-                                </div>                        
-                                <!-- end of Organ Select //-->
-
+                            
                                 <div class="border-0 flex flex-col items-center justify-center">
-                                        <button type="submit" class="bg-green-600 text-white py-2 px-4 
-                                                rounded-lg text-sm hover:bg-green-500">New Staff</button>
+                                        <a href="{{ route('admin.staff.create') }}" class="bg-green-600 text-white py-2 px-4 
+                                                rounded-lg text-sm hover:bg-green-500">New Staff</a>
                                 </div>
                             </form>
                     </div>
@@ -79,7 +45,7 @@
                                 <th class="text-center font-semibold py-2 w-16">SN</th>
                                 <th class="font-semibold py-2 text-left">Staff No</th>
                                 <th class="font-semibold py-2 text-left">Full name</th>                    
-                                <th class="font-semibold py-2 text-left">Segment</th>
+                                <th class="font-semibold py-2 text-left">Locations</th>
                                 <th class="font-semibold py-2 text-center">Action</th>
                             </tr>
                         </thead>
@@ -97,11 +63,11 @@
                                         <td>{{ $staff->fileno }}</td>
                                         <td>{{ $staff->surname }} {{ $staff->firstname }} {{ $staff->middlename }}</td>
 
-                                        <td>{{ $staff->segment->name }}</td>
+                                        <td></td>
                                         <td class="text-center">
                                             <span class="px-1">
                                                 <a class="bg-green-400 hover:bg-green-500 text-white rounded-md px-4 py-1 text-xs"
-                                                    href="{{ route('admin.profile.user_profile', ['fileno'=> $staff->fileno])}}">
+                                                    href="{{ route('admin.profile.email_user_profile', ['email'=> $staff->user->email])}}">
                                                     View
                                                 </a>
                                             </span>

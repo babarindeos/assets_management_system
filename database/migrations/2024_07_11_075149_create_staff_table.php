@@ -14,10 +14,7 @@ return new class extends Migration
         Schema::create('staff', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->unsignedBigInteger('segment_id');
-            $table->foreign('segment_id')->references('id')->on('segments')->onDelete('cascade');
-            $table->unsignedBigInteger('organ_id');           
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');           
             $table->string('fileno')->unique();
             $table->string('title');
             $table->string('surname');
