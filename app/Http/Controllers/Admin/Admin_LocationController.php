@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Location;
 use App\Models\LocationType;
+use App\Models\Organ;
 
 class Admin_LocationController extends Controller
 {
@@ -18,21 +19,21 @@ class Admin_LocationController extends Controller
 
     public function create()
     {
-        $location_types = LocationType::orderBy('name', 'asc')->get();
-        return view('admin.locations.create', compact('location_types'));
+        $organs = Organ::orderBy('name', 'asc')->get();
+        return view('admin.locations.create', compact('organs'));
     }
 
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'location_type' => 'required',
+            'organ' => 'required',
             'name' => 'required|unique:locations,name',
             'code' => 'required|unique:locations,code',
         ]);
 
         try
         {
-            $formFields['location_type_id'] = $formFields['location_type'];
+            $formFields['organ_id'] = $request->organ;
 
             $create = Location::create($formFields);
 

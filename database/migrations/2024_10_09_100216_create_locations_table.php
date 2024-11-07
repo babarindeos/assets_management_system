@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('location_type_id');
-            $table->foreign('location_type_id')->references('id')->on('location_types')->onDelete('cascade');
+            $table->unsignedBigInteger('organ_id');
+            $table->foreign('organ_id')->references('id')->on('organs')->onDelete('cascade');
             $table->string('name')->unique();
             $table->string('code')->unique();
             $table->timestamps();

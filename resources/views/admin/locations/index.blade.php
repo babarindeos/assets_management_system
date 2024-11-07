@@ -19,6 +19,12 @@
                                         <a href="{{ route('admin.location_types.index') }}" class="border border-green-600 text-gree py-2 px-4 
                                                 rounded-lg text-sm hover:bg-green-500 hover:text-white hover:border-green-500">Location Types</a>
                                 </div>
+
+                                
+                                <div class="border-0 flex flex-col items-center justify-center">
+                                        <a href="{{ route('admin.organs.index') }}" class="border border-green-600 text-gree py-2 px-4 
+                                                rounded-lg text-sm hover:bg-green-500 hover:text-white hover:border-green-500">Organs</a>
+                                </div>
                             </form>
                     </div>
             </div>
@@ -67,7 +73,7 @@
                                         <td>
                                             <a class="hover:underline" href="{{ route('admin.locations.show',['location'=>$location->id]) }}">
                                                 {{ $location->name }}</a>
-                                            <span class="text-sm">({{$location->location_type->name}})</span>
+                                            <div class="text-sm">{{ $location->organ->name}} ({{ $location->organ->code }})</div>
 
                                             <div class="flex flex-row text-sm space-x-4">
                                                 <div>Assets ()</div>

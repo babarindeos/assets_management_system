@@ -16,7 +16,7 @@
                     <!-- Name //-->
                     <div class="flex flex-col item-center justify-center">
                             <div class="text-white font-bold text-2xl font-serif">O-ORBDA</div>
-                            <div class="text-white font-semibold font-serif text-xs opacity-70">Assets Management System (AMS)</div>
+                            <div class="text-white font-semibold font-serif opacity-80">Assets Management System (AMS)</div>
                                 
                     </div>
                     <!-- end of name //-->
@@ -39,17 +39,17 @@
 
                             <div class="relative group">
                                 <button class="text-white px-1 py-2 rounded-md font-semibold hover:bg-green-600 px-2 hover:rounded-t">
-                                    Asset
+                                    Assets
                                 </button>
                                 <!-- Sub-menu -->
-                                <div class="absolute hidden group-hover:block bg-white text-gray-800 mt-0 py-2 shadow-lg">
-                                    <a href=" " class="flex flex-row px-4 py-2 hover:bg-gray-200 
+                                <div class="absolute hidden group-hover:block bg-white text-gray-800 mt-0 py-2 shadow-lg w-[300%]">
+                                    <a href="{{ route('admin.assets.index') }} " class="flex flex-row px-4 py-2 hover:bg-gray-200 
                                                                                             hover:border-l-yellow-500 hover:border-l-4 pr-8 
                                                                                             border-b border-gray-300">All Assets</a>
-                                    <a href=" " class="flex flex-row px-4 py-2 hover:bg-gray-200 
+                                    <a href="{{ route('admin.assets.find_asset') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 
                                                                                             hover:border-l-yellow-500 hover:border-l-4 
                                                                                             border-b border-gray-300 ">Find Asset</a>
-                                    <a href="{{ route('admin.asset_categories.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Categories</a>
+                                    <a href="{{ route('admin.assets.categories') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Categories</a>
                                 </div>
                             </div>
 
@@ -59,14 +59,14 @@
                                     Maintenance
                                 </button>
                                 <!-- Sub-menu -->
-                                <div class="absolute hidden group-hover:block bg-white text-gray-800 mt-0 py-2 shadow-lg">
-                                    <a href="{{ route('admin.directorates.index')}}" class="flex flex-row px-4 py-2 hover:bg-gray-200 
+                                <div class="absolute hidden group-hover:block bg-white text-gray-800 mt-0 py-2 shadow-lg w-[200%]">
+                                    <a href="{{ route('admin.maintenance.maintenance_schedule.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 
                                                                                             hover:border-l-yellow-500 hover:border-l-4 pr-8 
                                                                                             border-b border-gray-300">Maintenance Schedule</a>
-                                    <a href="{{ route('admin.departments.index')}} " class="flex flex-row px-4 py-2 hover:bg-gray-200 
+                                    <a href="{{ route('admin.maintenance.workorders.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 
                                                                                             hover:border-l-yellow-500 hover:border-l-4 
                                                                                             border-b border-gray-300">Work Order</a>
-                                    <a href="{{ route('admin.divisions.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Maintenance History</a>
+                                    <a href="" class="flex flex-row px-4 py-2 hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Maintenance History</a>
   
                                 </div>
                             </div>
@@ -77,40 +77,25 @@
                                     Procurement
                                 </button>
                                 <!-- Sub-menu -->
-                                <div class="absolute hidden group-hover:block bg-white text-gray-800 mt-0 py-2 shadow-lg">
-                                    <a href="{{ route('admin.directorates.index')}}" class="flex flex-row px-4 py-2 
+                                <div class="absolute hidden group-hover:block bg-white text-gray-800 mt-0 py-2 shadow-lg w-[200%]">
+                                    <a href="" class="flex flex-row px-4 py-2 
                                                                                             hover:bg-gray-200 hover:border-l-yellow-500 hover:border-l-4 pr-8 
                                                                                             border-b border-gray-300">Purchase Requests</a>
-                                    <a href="{{ route('admin.departments.index')}} " class="flex flex-row px-4 py-2 hover:bg-gray-200  
+                                    <a href="" class="flex flex-row px-4 py-2 hover:bg-gray-200  
                                                                                             hover:border-l-yellow-500 hover:border-l-4 
                                                                                             border-b border-gray-300">Vendors</a>
-                                    <a href="{{ route('admin.divisions.index') }}" class="flex flex-row px-4 py-2 
+                                    <a href="" class="flex flex-row px-4 py-2 
                                                                                           hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Procurement History</a>
                                 </div>
                             </div>
 
 
-                            <div class="relative group">
-                                <button class="text-white px-1 py-2 rounded-md font-semibold hover:bg-green-600 px-2 hover:rounded-t">
-                                    Contracts & Waranties
-                                </button>
-                                <!-- Sub-menu -->
-                                <div class="absolute hidden group-hover:block bg-white text-gray-800 mt-0 py-2 shadow-lg">
-                                    <a href="{{ route('admin.directorates.index')}}" class="flex flex-row px-4 py-2 
-                                                                                            hover:bg-gray-200 hover:border-l-yellow-500 hover:border-l-4 pr-8 
-                                                                                            border-b border-gray-300">All Contracts</a>
-                                    <a href="{{ route('admin.departments.index')}} " class="flex flex-row px-4 py-2 hover:bg-gray-200  
-                                                                                            hover:border-l-yellow-500 hover:border-l-4 
-                                                                                            border-b border-gray-300">Active Contracts</a>
-                                    <a href="{{ route('admin.divisions.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200  
-                                                                                          hover:border-l-yellow-500 hover:border-l-4 
-                                                                                          ">Expiring Contracts</a>                                    
-                                </div>
-                            </div>
+                            <a  href="{{ route('admin.asset_categories.index') }}" class="flex font-semibold items-center text-white hover:border-b-yellow-100 
+                                                                               hover:border-b-4 mx-3 hover:bg-green-600 px-2 hover:rounded-t ">Categories</a>
 
-                            <a  href='{{ route('admin.locations.index') }}' class="flex font-semibold items-center text-white hover:border-b-yellow-100 
+                            <a  href="{{ route('admin.locations.index') }}" class="flex font-semibold items-center text-white hover:border-b-yellow-100 
                                                                                hover:border-b-4 mx-3 hover:bg-green-600 px-2 hover:rounded-t ">Locations</a>
-                            <a  href='{{ route('admin.staff.index') }}' class="flex font-semibold items-center text-white 
+                            <a  href='' class="flex font-semibold items-center text-white 
                                                                                hover:border-b-yellow-100 hover:border-b-4 mx-3 hover:bg-green-600 px-2 hover:rounded-t">Users</a>
                            
                            
@@ -129,23 +114,44 @@
             <div class="lg:hidden hidden" id="mobile-menu">
                 <a href="#" class="block text-white px-4 py-2 hover:bg-gray-700 rounded-md">Dashboard</a>
                 <div class="relative">
-                    <button class="block w-full text-left text-white px-4 py-2 hover:bg-gray-700 rounded-md focus:outline-none" id="services-mobile">
-                        Organs
+                    <button class="block w-full text-left text-white px-4 py-2 hover:bg-gray-700 rounded-md focus:outline-none" id="assets-mobile">
+                        Assets
                     </button>
                     <!-- Sub-menu for Mobile -->
-                    <div class="hidden bg-slate-50 rounded-md" id="services-sub-menu-mobile">
-                        <a href="{{ route('admin.directorates.index') }}" class="block px-4 py-2 hover:bg-gray-200">Directorates</a>
-                        <a href="{{ route('admin.departments.index') }}" class="block px-4 py-2 hover:bg-gray-200">Departments</a>
-                        <a href="{{ route('admin.divisions.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200">Divisions</a>
-                        <a href="{{ route('admin.branches.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200">Branches</a>
-                        <a href="{{ route('admin.sections.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200">Sections</a>
-                        <a href="{{ route('admin.units.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200">Units</a>
+                    <div class="hidden bg-slate-50 rounded-md" id="assets-sub-menu-mobile">
+                        <a href="{{ route('admin.assets.index') }}" class="block px-4 py-2 hover:bg-gray-200">All Assets</a>
+                        <a href="{{ route('admin.assets.find_asset') }}" class="block px-4 py-2 hover:bg-gray-200">Find Asset</a>
+                        <a href="{{ route('admin.assets.categories') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200">Categories</a>
                     </div>
                 </div>
-                <a href="#" class="block text-white px-4 py-2 hover:bg-gray-700 rounded-md">Users</a>
-                <a href="#" class="block text-white px-4 py-2 hover:bg-gray-700 rounded-md">Documents</a>
-                <a href="#" class="block text-white px-4 py-2 hover:bg-gray-700 rounded-md">Tracker</a>
-                <a href="#" class="block text-white px-4 py-2 hover:bg-gray-700 rounded-md">Analytics</a>
+                <div class="relative">
+                    <button class="block w-full text-left text-white px-4 py-2 hover:bg-gray-700 rounded-md focus:outline-none" id="maintenance-mobile">
+                        Maintenance
+                    </button>
+                    <!-- Sub-menu for Mobile -->
+                    <div class="hidden bg-slate-50 rounded-md" id="maintenance-sub-menu-mobile">
+                        <a href="{{ route('admin.maintenance.maintenance_schedule.index') }}" class="block px-4 py-2 hover:bg-gray-200">Maintenance Schedule</a>
+                        <a href="{{ route('admin.maintenance.workorders.index') }}" class="block px-4 py-2 hover:bg-gray-200">Work Order</a>
+                        <a href="" class="flex flex-row px-4 py-2 hover:bg-gray-200">Maintenance History</a>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <button class="block w-full text-left text-white px-4 py-2 hover:bg-gray-700 rounded-md focus:outline-none" id="procurement-mobile">
+                        Procurement
+                    </button>
+                    <!-- Sub-menu for Mobile -->
+                    <div class="hidden bg-slate-50 rounded-md" id="procurement-sub-menu-mobile">
+                        <a href="" class="block px-4 py-2 hover:bg-gray-200">Purchase Requests</a>
+                        <a href="" class="block px-4 py-2 hover:bg-gray-200">Vendors</a>
+                        <a href="" class="flex flex-row px-4 py-2 hover:bg-gray-200">Procurement History</a>
+                    </div>
+                </div>
+                <a href="{{ route('admin.asset_categories.index') }}" class="block text-white px-4 py-2 hover:bg-gray-700 rounded-md">Categories</a>
+                
+                <a href="{{ route('admin.locations.index') }}" class="block text-white px-4 py-2 hover:bg-gray-700 rounded-md">Locations</a>
+                <a href="{{ route('admin.staff.index') }}" class="block text-white px-4 py-2 hover:bg-gray-700 rounded-md">Users</a>
+
                 <form action="{{ route('admin.auth.logout') }}" method="POST" class="block w-full">
                     @csrf
                     
@@ -163,8 +169,23 @@
         });
     
         // Toggle Mobile Sub-menu
-        document.getElementById('services-mobile').addEventListener('click', function () {
-            document.getElementById('services-sub-menu-mobile').classList.toggle('hidden');
+        document.getElementById('assets-mobile').addEventListener('click', function () {
+            document.getElementById('assets-sub-menu-mobile').classList.toggle('hidden');
+        });
+
+         // Toggle Mobile Sub-menu
+         document.getElementById('maintenance-mobile').addEventListener('click', function () {
+            document.getElementById('maintenance-sub-menu-mobile').classList.toggle('hidden');
+        });
+
+         // Toggle Mobile Sub-menu
+         document.getElementById('procurement-mobile').addEventListener('click', function () {
+            document.getElementById('procurement-sub-menu-mobile').classList.toggle('hidden');
+        });
+
+        // Toggle Mobile Sub-menu
+        document.getElementById('contracts-mobile').addEventListener('click', function () {
+            document.getElementById('contracts-sub-menu-mobile').classList.toggle('hidden');
         });
     </script>
 

@@ -10,4 +10,9 @@ class AssetCategory extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, 'category_id', 'id');
+    }
 }

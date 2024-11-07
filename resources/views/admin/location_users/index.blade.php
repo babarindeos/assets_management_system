@@ -56,8 +56,8 @@
                         <thead>
                             <tr class="bg-gray-200">
                                 <th width="10%" class="text-center font-semibold py-2 w-16">SN</th>                                
-                                <th width="50%" class="font-semibold py-2 text-left">Full names</th>                    
-                                <th width="20%" class="font-semibold py-2 text-left">Designation</th>
+                                <th width="40%" class="font-semibold py-2 text-left">Full names</th>                    
+                                <th width="30%" class="font-semibold py-2 text-left">Organ</th>
                                 <th width="20%" class="border font-semibold py-2 text-center">Action</th>
                                 
                             </tr>
@@ -79,12 +79,19 @@
                                             
 
                                             <div class="flex flex-row text-sm space-x-4">
+                                                <div>Locations ()</div>   
                                                 <div>Assets ()</div>                                                
                                             </div>
 
                                         </td>
 
-                                        <td></td>
+                                        <td>
+                                            {{ $location_user->location->organ->name}}
+                                            <div class="text-sm">
+                                                ({{ $location_user->location->organ->location_type->name }})
+                                            </div>
+
+                                        </td>
                                         
                                         <td class="text-center">                                           
                                             <form action="{{ route('admin.location_users.delete', ['location' => $location->id, 'location_user' => $location_user->id]) }}" 

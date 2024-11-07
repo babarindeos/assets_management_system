@@ -14,6 +14,22 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+        <script>
+            function preloadImages(...imageUrls)
+            {
+                imageUrls.forEach(url => {
+                    const img = new Image();
+                    img.src = url;
+                    console.log(url);
+                });
+            }
+
+            preloadImages(" {{ asset('images/logo.png') }}");
+            preloadImages("{{ asset('images/assets.jpg') }}");
+        </script>
+
+
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

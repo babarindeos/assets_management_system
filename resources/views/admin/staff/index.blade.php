@@ -14,6 +14,11 @@
                                         <a href="{{ route('admin.staff.create') }}" class="bg-green-600 text-white py-2 px-4 
                                                 rounded-lg text-sm hover:bg-green-500">New Staff</a>
                                 </div>
+
+                                <!-- <div class="border-0 flex flex-col items-center justify-center">
+                                        <a href="{{ route('admin.organs.create') }}" class="border border-green-600 text-gree py-2 px-4 
+                                                rounded-lg text-sm hover:bg-green-500 hover:text-white hover:border-green-500">Staff Locations</a>
+                                </div> -->
                             </form>
                     </div>
             </div>

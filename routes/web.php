@@ -34,6 +34,14 @@ use App\Http\Controllers\Admin\Admin_LocationUserController;
 
 use App\Http\Controllers\Admin\Admin_AssetCategoryController;
 
+use App\Http\Controllers\Admin\Admin_OrganController;
+
+use App\Http\Controllers\Admin\Admin_AssetController;
+
+use App\Http\Controllers\Admin\Admin_MaintenanceScheduleController;
+
+use App\Http\Controllers\Admin\Admin_WorkOrderController;
+
 
 
 use App\Http\Controllers\Staff\Staff_AuthController;
@@ -44,11 +52,16 @@ use App\Http\Controllers\Staff\Staff_GeneralMessageController;
 use App\Http\Controllers\Staff\Staff_PrivateMessageController;
 
 use App\Http\Controllers\Staff\Staff_ProfileController;
+use App\Http\Controllers\Staff\Staff_AssetController;
 
 
 
 use App\Http\Controllers\Staff\Staff_CategoryController;
 use App\Http\Controllers\Staff\Staff_AdminDocumentController;
+use App\Http\Controllers\Staff\Staff_ServiceProviderController;
+use App\Http\Controllers\Staff\Staff_MaintenanceScheduleController;
+
+use App\Http\Controllers\Staff\Staff_WorkOrderController;
 
 use App\Http\Controllers\PDFController;
 
@@ -142,7 +155,42 @@ Route::prefix('staff')->middleware(['auth', 'staff'])->group(function(){
     Route::post('/categories/store', [Staff_CategoryController::class, 'store'])->name('staff.categories.store');
 
 
-  
+    // Assets
+    Route::get('assets', [Staff_AssetController::class, 'index'])->name('staff.assets.index');
+    Route::get('assets/create', [Staff_AssetController::class, 'create'])->name('staff.assets.create');
+    Route::post('assets/store', [Staff_AssetController::class, 'store'])->name('staff.assets.store');
+    Route::get('assets/{asset}/show', [Staff_AssetController::class, 'show'])->name('staff.assets.show');
+    Route::get('assets/{asset}/edit', [Staff_AssetController::class, 'edit'])->name('staff.assets.edit');
+    Route::put('assets/{asset}/update', [Staff_AssetController::class, 'update'])->name('staff.assets.update');
+    Route::get('assets/{asset}/confirm_delete', [Staff_AssetController::class, 'confirm_delete'])->name('staff.assets.confirm_delete');
+    Route::delete('assets/{asset}/delete', [Staff_AssetController::class, 'destroy'])->name('staff.assets.delete');
+
+    // Maintenance
+    Route::get('maintenance/service_providers', [Staff_ServiceProviderController::class, 'index'])->name('staff.maintenance.service_providers.index');
+    Route::get('maintenance/service_providers/create', [Staff_ServiceProviderController::class, 'create'])->name('staff.maintenance.service_providers.create');
+    Route::post('maintenance/service_providers/store', [Staff_ServiceProviderController::class, 'store'])->name('staff.maintenance.service_providers.store');
+    Route::get('maintenance/service_providers/{service_provider}/edit', [Staff_ServiceProviderController::class, 'edit'])->name('staff.maintenance.service_providers.edit');
+    Route::post('maintenance/service_providers/{service_provider}/update', [Staff_ServiceProviderController::class, 'update'])->name('staff.maintenance.service_providers.update');
+    Route::get('maintenance/service_providers/{service_provider}/confirm_delete', [Staff_ServiceProviderController::class, 'confirm_delete'])->name('staff.maintenance.service_providers.confirm_delete');
+    Route::post('maintenance/service_providers/{service_provider}/delete', [Staff_ServiceProviderController::class, 'delete'])->name('staff.maintenance.service_providers.delete');
+
+    Route::get('maintenance/maintenance_schedules', [Staff_MaintenanceScheduleController::class, 'index'])->name('staff.maintenance.maintenance_schedules.index');
+    Route::get('maintenance/maintenance_schedules/create', [Staff_MaintenanceScheduleController::class, 'create'])->name('staff.maintenance.maintenance_schedules.create');
+    Route::post('maintenance/maintenance_schedules/store', [Staff_MaintenanceScheduleController::class, 'store'])->name('staff.maintenance.maintenance_schedules.store');
+    Route::get('maintenance/maintenance_schedules/{maintenance_schedule}/edit', [Staff_MaintenanceScheduleController::class, 'edit'])->name('staff.maintenance.maintenance_schedules.edit');
+    Route::post('maintenance/maintenance_schedules/{maintenance_schedule}/update', [Staff_MaintenanceScheduleController::class, 'update'])->name('staff.maintenance.maintenance_schedules.update');
+    Route::get('maintenance/maintenance_schedules/{maintenance_schedule}/confirm_delete', [Staff_MaintenanceScheduleController::class, 'confirm_delete'])->name('staff.maintenance.maintenance_schedules.confirm_delete');
+    Route::post('maintenance/maintenance_schedule/{maintenance_schedule}/delete', [Staff_MaintenanceScheduleController::class, 'destory'])->name('staff.maintenance.maintenance_schedules.delete');
+
+    // Work Order
+    Route::get('maintenance/workorders/create', [Staff_WorkOrderController::class, 'create'])->name('staff.maintenance.workorders.create');
+    Route::post('maintenance/workorders/store', [Staff_WorkOrderController::class, 'store'])->name('staff.maintenance.workorders.store');
+    Route::get('maintenance/workorders/history', [Staff_WorkOrderController::class, 'history'])->name('staff.maintenance.workorders.history');
+    Route::get('maintenance/workorders/{workorder}/show',[Staff_WorkOrderController::class, 'show'])->name('staff.maintenance.workorders.show');
+    Route::get('maintenance/workorders/{workorder}/edit',[Staff_WorkOrderController::class, 'edit'])->name('staff.maintenance.workorders.edit');
+    Route::post('maintenance/workorders/{workorder}/update',[Staff_WorkOrderController::class, 'update'])->name('staff.maintenance.workorders.update');
+    Route::get('maintenance/workorders/{workorder}/confirm_delete',[Staff_WorkOrderController::class, 'confirm_delete'])->name('staff.maintenance.workorder.confirm_delete');
+    Route::post('maintenance/workorders/{workorder}/delete',[Staff_WorkOrderController::class, 'destroy'])->name('staff.maintenance.workorders.delete');
 });
 
 
@@ -279,6 +327,16 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
 
 
 
+    // Organ 
+    Route::get('organs', [Admin_OrganController::class, "index"])->name('admin.organs.index');
+    Route::get('organs/{organ}/show', [Admin_OrganController::class, 'show'])->name('admin.organs.show');
+    Route::get('organs/create', [Admin_OrganController::class, 'create'])->name('admin.organs.create');
+    Route::post('organs/store', [Admin_OrganController::class, 'store'])->name('admin.organs.store');
+    Route::get('organs/{organ}/edit', [Admin_OrganController::class, 'edit'])->name('admin.organs.edit');
+    Route::post('organs/{organ}/update', [Admin_OrganController::class, 'update'])->name('admin.organs.update');
+    Route::get('organs/{organ}/confirm_delete', [Admin_OrganController::class, 'confirm_delete'])->name('admin.organs.confirm_delete');
+    Route::post('organs/{organ}/delete', [Admin_OrganController::class, 'destroy'])->name('admin.organs.delete');
+
 
     // Location
     Route::get('locations', [Admin_LocationController::class, 'index'])->name('admin.locations.index');
@@ -352,6 +410,20 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     Route::post('asset_categories/{category}/update', [Admin_AssetCategoryController::class, 'update'])->name('admin.asset_categories.update');
     Route::get('asset_categories/{category}/confirm_delete', [Admin_AssetCategoryController::class, 'confirm_delete'])->name('admin.asset_categories.confirm_delete');
     Route::post('asset_categories/{category}/delete', [Admin_AssetCategoryController::class, 'destroy'])->name('admin.asset_categories.delete');
+
+
+    // Asset
+    Route::get('assets', [Admin_AssetController::class, 'index'])->name('admin.assets.index');
+    Route::get('assets/{asset}/show', [Admin_AssetController::class, 'show'])->name('admin.assets.show');
+    Route::get('assets/categories', [Admin_AssetController::class, 'categories'])->name('admin.assets.categories');
+    Route::get('assets/categories/{category}/show', [Admin_AssetController::class, 'category_show'])->name('admin.assets.categories.show');
+    Route::get('assets/find_asset', [Admin_AssetController::class, 'find_asset'])->name('admin.assets.find_asset');
+
+
+    //
+    Route::get('maintenance/maintenace_schedule', [Admin_MaintenanceScheduleController::class, 'index'])->name('admin.maintenance.maintenance_schedule.index');
+    
+    Route::get('maintenance/workorders', [Admin_WorkOrderController::class, 'index'])->name('admin.maintenance.workorders.index');
 });
 
 

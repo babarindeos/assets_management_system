@@ -14,7 +14,7 @@
 
 
 
-        <!-- new college form //-->
+        <!-- new staff form //-->
         <section>
                 <div>
                     <form  action="{{ route('admin.staff.update', ['staff' => $staff->id])}}" method="POST" class="flex flex-col mx-auto w-[90%] items-center justify-center">
@@ -35,36 +35,7 @@
                          
 
 
-                        <!-- Department //-->
-                        <div class="flex flex-col border-red-900 w-[80%] md:w-[60%] py-2">
-                                
-                                
-                            <select name="department" class="border border-1 border-gray-400 bg-gray-50
-                                                                     w-full p-4 rounded-md 
-                                                                     focus:outline-none
-                                                                     focus:border-blue-500 
-                                                                     focus:ring
-                                                                     focus:ring-blue-100"
-                                                                     
-                                                                     
-                                                                     style="font-family:'Lato';font-size:16px;font-weight:500;"
-                                                                     required
-                                                                     >
-                                                                    <option value=''>-- Select Department --</option>
-                                                                        @foreach($departments as $department)
-                                                                            <option class='py-4' @if($department->id == $staff->department_id) selected @endif value="{{$department->id}}">{{$department->department_name}} ({{$department->department_code}})</option>
-                                                                        @endforeach                                                                    
-                                                                    </select>
-
-                                                                     @error('department')
-                                                                        <span class="text-red-700 text-sm">
-                                                                            {{$message}}
-                                                                        </span>
-                                                                     @enderror
-                            
-                        </div>                        
-                        <!-- end of Department //-->
-
+                       
 
                         <!-- Title //-->
                         <div class="flex flex-col border-red-900 w-[80%] md:w-[60%] py-2">
@@ -215,10 +186,10 @@
                                            rounded-md text-lg" style="font-family:'Lato';font-weight:500;">Update Staff</button>
                         </div>
                         
-                    </form><!-- end of new college form //-->
+                    </form><!-- end of new staff form //-->
                 <div>
         </section>
-        <!-- end of new college form //-->
+        <!-- end of new staff form //-->
 
 
     </div><!-- end of container //-->

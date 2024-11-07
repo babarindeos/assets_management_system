@@ -39,7 +39,7 @@
 
                         <div class="flex flex-col w-[80%] md:w-[60%] py-2 md:py-4" style="font-family:'Lato'; font-size:18px; font-weight:400;">
                             <h2 class="font-semibold text-xl py-1" >New Location</h2>
-                            Select Location Type and Provide Location full and short name
+                            Select Organ and Provide Location full name and short name
                         </div>
 
 
@@ -50,7 +50,7 @@
                         <div class="flex flex-col border-red-900 w-[80%] md:w-[60%] py-2">
                                 
                                 
-                            <select name="location_type" class="border border-1 border-gray-400 bg-gray-50
+                            <select name="organ" class="border border-1 border-gray-400 bg-gray-50
                                                                      w-full p-4 rounded-md 
                                                                      focus:outline-none
                                                                      focus:border-blue-500 
@@ -60,13 +60,13 @@
                                                                      style="font-family:'Lato';font-size:16px;font-weight:500;"
                                                                      required
                                                                      >
-                                                                    <option value=''>-- Select Location Type --</option>
-                                                                        @foreach($location_types as $location_type)
-                                                                            <option class='py-4' value="{{$location_type->id}}">{{$location_type->name}}</option>
+                                                                    <option value=''>-- Select Organ --</option>
+                                                                        @foreach($organs as $organ)
+                                                                            <option class='py-4' value="{{$organ->id}}">{{$organ->name}} ({{ $organ->code }})</option>
                                                                         @endforeach                                                                    
                                                                     </select>
 
-                                                                     @error('location_type')
+                                                                     @error('organ')
                                                                         <span class="text-red-700 text-sm">
                                                                             {{$message}}
                                                                         </span>

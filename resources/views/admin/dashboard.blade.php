@@ -1,6 +1,6 @@
 <x-admin-layout>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <div class="x flex-col container mx-4 mb-8 border border-0 md:mx-auto">
+    <div class="flex flex-col w-[95%] mx-4 mb-8 border border-0 md:mx-auto">
 
         <!-- Page Header //-->
         <section class="border-b border-gray-200 py-2 mt-2">
@@ -26,7 +26,7 @@
                                         </div>                            
                                     
                                         <div class="text-sm text-white font-normal">
-                                            Documents
+                                            Assets
                                         </div>
                                     </div>
                                     <div class="w-1/4 flex justify-center items-center border-0">
@@ -49,7 +49,7 @@
                                         </div>                            
                                     
                                         <div class="text-sm text-white font-normal">
-                                            Workflows
+                                            Categories
                                         </div>
                                     </div>
                                     <div class="w-1/4 flex justify-center items-center border-0">
@@ -98,7 +98,7 @@
                                         </div>                            
                                     
                                         <div class="text-sm text-white font-normal">
-                                            Departments
+                                           Locations
                                         </div>
                                     </div>
                                     <div class="w-1/4 flex justify-center items-center border-0">

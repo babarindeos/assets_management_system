@@ -9,10 +9,12 @@ class Location extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['location_type_id', 'name', 'code'];
+    protected $fillable = ['organ_id', 'name', 'code'];
 
-    public function location_type()
+    public function organ()
     {
-        return $this->belongsTo(LocationType::class, 'location_type_id', 'id');
+        return $this->belongsTo(Organ::class, 'organ_id', 'id');
     }
+
+    
 }
