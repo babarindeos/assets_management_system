@@ -3,7 +3,7 @@
     <div class="flex flex-col w-[95%] border border-0 mx-auto">
         <section class="flex border-b border-gray-300 py-4 mt-4 justify-between">
                 <div class="text-2xl font-semibold ">
-                    Maintenance History              
+                    Work Orders             
                 </div>
                 <div>
                             <a href="{{ route('staff.maintenance.workorders.create') }}" class="bg-green-600 text-white py-2 px-4 
@@ -107,7 +107,7 @@
             <section class="flex flex-col w-[95%] md:w-[95%] mx-auto px-4">
                 <div class="flex flex-row border-0 justify-center 
                             text-2xl font-semibold text-gray-300 py-8">
-                        There is currently no Maintenance History
+                        There is currently no Work Orders
                 </div>
             </section>
         @endif

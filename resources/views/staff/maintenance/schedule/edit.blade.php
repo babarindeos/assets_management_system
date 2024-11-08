@@ -102,11 +102,11 @@
                                                                 focus:ring
                                                                 focus:ring-blue-100" 
                                                                 
-                                                                value="{{ $maintenance_schedule->message }}"
+                                                                
                                                                 
                                                                 style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                 maxlength="140"
-                                                                >  </textarea>
+                                                                > {{ $maintenance_schedule->description }} </textarea>
                                                                 <div class="text-xs text-gray-600">Description (140 words)</div>
                                                                                                                                     
 

@@ -14,12 +14,20 @@ class WorkOrder extends Model
                             'priority_level', 
                             'description', 
                             'assigned_personnel',
+                            'service_provider_id',
                             'scheduled_date_time',
+                            'duration',
+                            'cost',
                             'requirements',
                             'user_id'];
 
     public function asset()
     {
         return $this->belongsTo(Asset::class, 'asset_id', 'id');
+    }
+
+    public function service_provider()
+    {
+        return $this->belongsTo(ServiceProvider::class, 'service_provider_id', 'id');
     }
 }

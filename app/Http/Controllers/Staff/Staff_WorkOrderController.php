@@ -7,18 +7,27 @@ use Illuminate\Http\Request;
 use App\Models\Asset;
 use App\Models\WorkOrder;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ServiceProvider;
 
 
 class Staff_WorkOrderController extends Controller
 {
     //
-    
+    public function index()
+    {
+        $workorders = WorkOrder::where('user_id', Auth::user()->id)
+                                 ->orderBy('id', 'desc')->paginate(20);
+        
+        return view('staff.maintenance.workorders.index', compact('workorders'));
+    }
 
     public function create()
     {
         $assets = Asset::where('user_id', auth()->user()->id)
                          ->orderBy('item', 'asc')->get();
-        return view('staff.maintenance.workorders.create', compact('assets'));
+        $service_providers = ServiceProvider::where('user_id', Auth::user()->id)
+                         ->orderBy('id', 'desc')->get();
+        return view('staff.maintenance.workorders.create', compact('assets', 'service_providers'));
     }
 
     public function store(Request $request)
@@ -29,9 +38,12 @@ class Staff_WorkOrderController extends Controller
             'priority_level' => 'required',
             'assigned_personnel' => 'required',
             'scheduled_date_time' => 'required',
+            'duration' => 'required',
+            'cost' => 'required',
 
         ]);
 
+        $formFields['service_provider_id'] = $request->service_provider;
         $formFields['asset_id'] = $request->input('asset');
         $formFields['description'] = $request->input('description');
         $formFields['requirements'] = $request->input('requirements');
@@ -87,7 +99,10 @@ class Staff_WorkOrderController extends Controller
         $assets = Asset::where('user_id', auth()->user()->id)
         ->orderBy('item', 'asc')->get();
 
-        return view('staff.maintenance.workorders.edit', compact('workorder', 'assets'));
+        $service_providers = ServiceProvider::where('user_id', Auth::user()->id)
+                         ->orderBy('id', 'desc')->get();
+
+        return view('staff.maintenance.workorders.edit', compact('workorder', 'assets', 'service_providers'));
     }
 
     public function update(Request $request, WorkOrder $workorder)
@@ -101,6 +116,7 @@ class Staff_WorkOrderController extends Controller
 
         ]);
 
+        $formFields['service_provider_id'] = $request->service_provider_id;
         $formFields['asset_id'] = $request->input('asset');
         $formFields['description'] = $request->input('description');
         $formFields['requirements'] = $request->input('requirements');

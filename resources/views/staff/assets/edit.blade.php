@@ -12,8 +12,9 @@
     
         <section class="py-8 mt-2">
             <div>
-                <form  action="{{ route('staff.assets.store')}} " method="POST" enctype="multipart/form-data" class="flex flex-col mx-auto w-[90%] items-center justify-center">
+                <form  action="{{ route('staff.assets.update',['asset'=>$asset->id]) }} " method="POST" enctype="multipart/form-data" class="flex flex-col mx-auto w-[90%] items-center justify-center">
                     @csrf
+                   
 
                     
 
@@ -38,7 +39,7 @@
                                                                 focus:ring
                                                                 focus:ring-blue-100" placeholder="Unique Identification Number"
                                                                 
-                                                                value="{{ old('uuid') }}"
+                                                                value="{{ $asset->uuid }}"
                                                                 
                                                                 style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                 required
@@ -68,7 +69,7 @@
                                                                      >
                                                                         <option value=''>-- Select Location --</option>
                                                                         @foreach ($locations as $location)
-                                                                                <option value='{{ $location->location->id }}'>{{ $location->location->name }}</option>
+                                                                                <option @if($location->location->id==$asset->userlocation_id) selected @endif value='{{ $location->location->id }}'>{{ $location->location->name }}</option>
                                                                         @endforeach
                                                                         
 
@@ -99,7 +100,7 @@
                                                                      >
                                                                         <option value=''>-- Select Category --</option>
                                                                         @foreach ($categories as $category)
-                                                                                <option value='{{ $category->id }}'>{{ $category->name }}</option>
+                                                                                <option @if($category->id==$asset->category_id) selected @endif value='{{ $category->id }}'>{{ $category->name }}</option>
                                                                         @endforeach
                                                                         
 
@@ -128,7 +129,7 @@
                                                                                         focus:ring
                                                                                         focus:ring-blue-100" placeholder="Item Name"
                                                                                         
-                                                                                        value="{{ old('item') }}"
+                                                                                        value="{{ $asset->item }}"
                                                                                         
                                                                                         style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                                         required
@@ -150,7 +151,7 @@
                                                                                         focus:ring
                                                                                         focus:ring-blue-100" placeholder="Cost of Item"
                                                                                         
-                                                                                        value="{{ old('cost') }}"
+                                                                                        value="{{ $asset->cost }}"
                                                                                         
                                                                                         style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                                         
@@ -182,11 +183,11 @@
                                                                 focus:ring
                                                                 focus:ring-blue-100" 
                                                                 
-                                                                value="{{ old('description') }}"
+                                                                value="{{ $asset->description }}"
                                                                 
                                                                 style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                 maxlength="140"
-                                                                >  </textarea>
+                                                                > {{ $asset->description }} </textarea>
                                                                 <div class="text-xs text-gray-600">Description of Asset (140 words)</div>
                                                                                                                                     
 
@@ -211,7 +212,7 @@
                                                                             focus:ring
                                                                             focus:ring-blue-100" placeholder="Purchase Date"
                                                                             
-                                                                            value="{{ old('document_title') }}"
+                                                                            value="{{ $asset->purchase_date }}"
                                                                             
                                                                             style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                             
@@ -237,7 +238,7 @@
                                                                             focus:ring
                                                                             focus:ring-blue-100" placeholder="Supplier or Contractor Details"
                                                                             
-                                                                            value="{{ old('supplier') }}"
+                                                                            value="{{ $asset->supplier }}"
                                                                             
                                                                             style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                             
@@ -269,7 +270,7 @@
                                                                             focus:ring
                                                                             focus:ring-blue-100" placeholder="Expected Life Span"
                                                                             
-                                                                            value="{{ old('life_span') }}"
+                                                                            value="{{ $asset->life_span }}"
                                                                             
                                                                             style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                             
@@ -295,7 +296,7 @@
                                                                             focus:ring
                                                                             focus:ring-blue-100" placeholder="Rate and Method of Depreciation"
                                                                             
-                                                                            value="{{ old('depreciation_rate') }}"
+                                                                            value="{{ $asset->depreciation_rate }}"
                                                                             
                                                                             style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                             
@@ -326,7 +327,7 @@
                                                                             focus:ring
                                                                             focus:ring-blue-100" placeholder="Date of Disposal"
                                                                             
-                                                                            value="{{ old('disposal_date') }}"
+                                                                            value="{{ $asset->disposal_date }}"
                                                                             
                                                                             style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                             
@@ -352,7 +353,7 @@
                                                                             focus:ring
                                                                             focus:ring-blue-100" placeholder="Revenue from Disposal/Receipt No."
                                                                             
-                                                                            value="{{ old('disposal_revenue') }}"
+                                                                            value="{{ $asset->disposal_revenue }}"
                                                                             
                                                                             style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                             
@@ -385,7 +386,7 @@
                                                                             focus:ring
                                                                             focus:ring-blue-100" placeholder="Authority to Dispose"
                                                                             
-                                                                            value="{{ old('dispose_authority') }}"
+                                                                            value="{{ $asset->dispose_authority  }}"
                                                                             
                                                                             style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                             
@@ -416,11 +417,11 @@
                                                                 focus:ring
                                                                 focus:ring-blue-100" 
                                                                 
-                                                                value="{{ old('comment') }}"
+                                                                value="{{ $asset->comment }}"
                                                                 
                                                                 style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
                                                                 maxlength="140"
-                                                                >  </textarea>
+                                                                >  {{ $asset->comment }} </textarea>
                                                                 <div class="text-xs text-gray-600">Any other useful information (140 words)</div>
                                                                                                                                     
 

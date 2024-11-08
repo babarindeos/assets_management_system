@@ -62,6 +62,7 @@ use App\Http\Controllers\Staff\Staff_ServiceProviderController;
 use App\Http\Controllers\Staff\Staff_MaintenanceScheduleController;
 
 use App\Http\Controllers\Staff\Staff_WorkOrderController;
+use App\Http\Controllers\Staff\Staff_MaintenanceHistoryController;
 
 use App\Http\Controllers\PDFController;
 
@@ -161,9 +162,9 @@ Route::prefix('staff')->middleware(['auth', 'staff'])->group(function(){
     Route::post('assets/store', [Staff_AssetController::class, 'store'])->name('staff.assets.store');
     Route::get('assets/{asset}/show', [Staff_AssetController::class, 'show'])->name('staff.assets.show');
     Route::get('assets/{asset}/edit', [Staff_AssetController::class, 'edit'])->name('staff.assets.edit');
-    Route::put('assets/{asset}/update', [Staff_AssetController::class, 'update'])->name('staff.assets.update');
+    Route::post('assets/{asset}/update', [Staff_AssetController::class, 'update'])->name('staff.assets.update');
     Route::get('assets/{asset}/confirm_delete', [Staff_AssetController::class, 'confirm_delete'])->name('staff.assets.confirm_delete');
-    Route::delete('assets/{asset}/delete', [Staff_AssetController::class, 'destroy'])->name('staff.assets.delete');
+    Route::post('assets/{asset}/delete', [Staff_AssetController::class, 'destroy'])->name('staff.assets.delete');
 
     // Maintenance
     Route::get('maintenance/service_providers', [Staff_ServiceProviderController::class, 'index'])->name('staff.maintenance.service_providers.index');
@@ -183,9 +184,10 @@ Route::prefix('staff')->middleware(['auth', 'staff'])->group(function(){
     Route::post('maintenance/maintenance_schedule/{maintenance_schedule}/delete', [Staff_MaintenanceScheduleController::class, 'destory'])->name('staff.maintenance.maintenance_schedules.delete');
 
     // Work Order
+    Route::get('maintenance/workorders/', [Staff_WorkOrderController::class, 'index'])->name('staff.maintenance.workorders.index');
     Route::get('maintenance/workorders/create', [Staff_WorkOrderController::class, 'create'])->name('staff.maintenance.workorders.create');
     Route::post('maintenance/workorders/store', [Staff_WorkOrderController::class, 'store'])->name('staff.maintenance.workorders.store');
-    Route::get('maintenance/workorders/history', [Staff_WorkOrderController::class, 'history'])->name('staff.maintenance.workorders.history');
+    Route::get('maintenance/history', [Staff_MaintenanceHistoryController::class, 'index'])->name('staff.maintenance.history');
     Route::get('maintenance/workorders/{workorder}/show',[Staff_WorkOrderController::class, 'show'])->name('staff.maintenance.workorders.show');
     Route::get('maintenance/workorders/{workorder}/edit',[Staff_WorkOrderController::class, 'edit'])->name('staff.maintenance.workorders.edit');
     Route::post('maintenance/workorders/{workorder}/update',[Staff_WorkOrderController::class, 'update'])->name('staff.maintenance.workorders.update');

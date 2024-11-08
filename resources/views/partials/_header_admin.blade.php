@@ -95,7 +95,7 @@
 
                             <a  href="{{ route('admin.locations.index') }}" class="flex font-semibold items-center text-white hover:border-b-yellow-100 
                                                                                hover:border-b-4 mx-3 hover:bg-green-600 px-2 hover:rounded-t ">Locations</a>
-                            <a  href='' class="flex font-semibold items-center text-white 
+                            <a  href="{{ route('admin.staff.index') }}" class="flex font-semibold items-center text-white 
                                                                                hover:border-b-yellow-100 hover:border-b-4 mx-3 hover:bg-green-600 px-2 hover:rounded-t">Users</a>
                            
                            

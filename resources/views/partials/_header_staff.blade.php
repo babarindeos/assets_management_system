@@ -63,12 +63,12 @@
                                     <a href="{{ route('staff.maintenance.maintenance_schedules.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 
                                                                                             hover:border-l-yellow-500 hover:border-l-4 pr-8 
                                                                                             border-b border-gray-300">Maintenance Schedule</a>
-                                    <a href="{{ route('staff.maintenance.workorders.create') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 
+                                    <a href="{{ route('staff.maintenance.workorders.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 
                                                                                             hover:border-l-yellow-500 hover:border-l-4 
                                                                                             border-b border-gray-300">Work Order</a>
                                     <a href="{{ route('staff.maintenance.service_providers.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 hover:border-l-yellow-500 hover:border-l-4 
                                                                                             border-b border-gray-300">Service Providers</a>
-                                    <a href="{{ route('staff.maintenance.workorders.history') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Maintenance History</a>
+                                    <a href="{{ route('staff.maintenance.history') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Maintenance History</a>
   
                                 </div>
                             </div>
@@ -149,7 +149,7 @@
                         <a href="{{ route('staff.maintenance.maintenance_schedules.index') }}" class="block px-4 py-2 hover:bg-gray-200">Maintenance Schedule</a>
                         <a href="{{ route('staff.maintenance.workorders.create') }}" class="block px-4 py-2 hover:bg-gray-200">Work Order</a>
                         <a href="{{ route('staff.maintenance.service_providers.index') }}" class="block px-4 py-2 hover:bg-gray-200">Service Providers</a>
-                        <a href="{{ route('staff.maintenance.workorders.history') }}" class="block px-4 py-2 hover:bg-gray-200">Maintenance History</a>
+                        <a href="{{ route('staff.maintenance.history') }}" class="block px-4 py-2 hover:bg-gray-200">Maintenance History</a>
                     </div>
                 </div>
                 <div class="relative">

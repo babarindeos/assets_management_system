@@ -1,17 +1,30 @@
 <x-staff-layout>
 
     <div class="flex flex-col container mx-4 border border-0 md:mx-auto">
-        <section class="border-b border-gray-200 py-2 mt-2">
+        <section class="flex border-b border-gray-200 py-4 mt-2">
                 <div class="text-2xl font-semibold ">
-                    Asset     
-                   
+                    Asset          
                 </div>
+                <div class="flex flex-row w-full justify-end space-x-1">
+                            
+                                <div class="border-0 flex flex-col items-center justify-center">
+                                        <a href="{{ route('staff.assets.edit',['asset'=>$asset->id]) }}" class="bg-green-600 text-white py-2 px-4 
+                                                rounded-lg text-sm hover:bg-green-500">Edit </a>
+                                </div>
+
+                                <div class="border-0 flex flex-col items-center justify-center">
+                                        <a href="{{ route('staff.assets.confirm_delete',['asset'=>$asset->id]) }}" class="border border-green-600 text-gree py-2 px-4 
+                                                rounded-lg text-sm hover:bg-green-500 hover:text-white hover:border-green-500">Delete</a>
+                                </div>                               
+                               
+                            </form>
+                    </div>
                 
         </section>
     
         
     
-        <section class="py-8 mt-2">
+        <section class="py-6">
             <table width="80%"  >
                 <tbody>
                     <tr class="border-b">

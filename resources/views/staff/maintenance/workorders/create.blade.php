@@ -7,8 +7,8 @@
                     Work Order              
                 </div>
                 <div>
-                            <a href="{{ route('staff.maintenance.workorders.history') }}" class="bg-green-600 text-white py-2 px-4 
-                                            rounded-lg text-sm hover:bg-green-500">Maintenance History</a>
+                            <a href="{{ route('staff.maintenance.workorders.index') }}" class="bg-green-600 text-white py-2 px-4 
+                                            rounded-lg text-sm hover:bg-green-500">Work Orders</a>
                 </div>
                 
         </section>
@@ -187,31 +187,117 @@
                     </div><!-- end of personnel //-->
 
 
-                    <!-- Schedule date and time  //-->
-                    <div class="flex flex-col border-red-900 w-[80%] md:w-[60%] py-3">
-                    
-                        
-                        <input type="text" name="scheduled_date_time" class="border border-1 border-gray-400 bg-gray-50
-                                                                w-full p-4 rounded-md 
-                                                                focus:outline-none
-                                                                focus:border-blue-500 
-                                                                focus:ring
-                                                                focus:ring-blue-100" placeholder="Scheduled Date and Time"
-                                                                
-                                                                value="{{ old('scheduled_date_time') }}"
-                                                                
-                                                                style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
-                                                                required
-                                                                />  
-                                                                                                                                    
 
-                                                                @error('scheduled_date_time')
-                                                                    <span class="text-red-700 text-sm">
-                                                                        {{$message}}
-                                                                    </span>
-                                                                @enderror
+                    <!-- Service Provider //-->
+                    <div class="flex flex-col w-[80%] md:w-[60%] py-3">
+                        <select name="service_provider" class="border border-1 border-gray-400 bg-gray-50
+                                                                     w-full p-4 rounded-md 
+                                                                     focus:outline-none
+                                                                     focus:border-blue-500 
+                                                                     focus:ring
+                                                                     focus:ring-blue-100"
+                                                                     
+                                                                     
+                                                                     style="font-family:'Lato';font-size:16px;font-weight:500;"
+                                                                     required
+                                                                     >
+                                                                        <option value=''>-- Service Provider --</option>
+                                                                        @foreach($service_providers as $service_provider) 
+                                                                            <option value='{{ $service_provider->id }}'>{{ $service_provider->provider_name }}</option>
+                                                                        @endforeach
+                                                                        
+
+                                                                    </select>
+
+                                                                     @error('service_provider')
+                                                                        <span class="text-red-700 text-sm">
+                                                                            {{$message}}
+                                                                        </span>
+                                                                     @enderror
+                            
+                    </div>                        
+                    <!-- end of Service Provider //-->  
+
+
+                    
+                    <div class="flex flex-col md:flex-row space-y-2 md:space-x-2 md:space-y-0 border-red-900 w-[80%] md:w-[60%] py-3">
+
+                                    <!-- Schedule date and time  //-->
+                                    <div class="flex flex-col w-full md:w-1/2">
+                                                <input type="text" name="scheduled_date_time" class="border border-1 border-gray-400 bg-gray-50
+                                                                        w-full p-4 rounded-md 
+                                                                        focus:outline-none
+                                                                        focus:border-blue-500 
+                                                                        focus:ring
+                                                                        focus:ring-blue-100" placeholder="Scheduled Date and Time"
+                                                                        
+                                                                        value="{{ old('scheduled_date_time') }}"
+                                                                        
+                                                                        style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
+                                                                        required
+                                                                        />  
+                                                                                                                                            
+
+                                                                        @error('scheduled_date_time')
+                                                                            <span class="text-red-700 text-sm">
+                                                                                {{$message}}
+                                                                            </span>
+                                                                        @enderror
+                                    </div><!-- end of scheduled date and time //-->
+
+                                    <!-- Duration  //-->
+                                    <div class="flex flex-col w-full md:w-1/2">
+                                                <input type="text" name="duration" class="border border-1 border-gray-400 bg-gray-50
+                                                                        w-full p-4 rounded-md 
+                                                                        focus:outline-none
+                                                                        focus:border-blue-500 
+                                                                        focus:ring
+                                                                        focus:ring-blue-100" placeholder="Duration of Maintenance"
+                                                                        
+                                                                        value="{{ old('duration') }}"
+                                                                        
+                                                                        style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
+                                                                        required
+                                                                        />  
+                                                                                                                                            
+
+                                                                        @error('duration')
+                                                                            <span class="text-red-700 text-sm">
+                                                                                {{$message}}
+                                                                            </span>
+                                                                        @enderror
+                                    </div>
                         
-                    </div><!-- end of scheduled date and time //-->
+                    </div><!-- end of duration //-->
+
+                    
+
+                    <!-- Cost  //-->
+                    <div class="flex flex-col border-red-900 w-[80%] md:w-[60%] py-3">
+                            
+                                
+                            <input type="text" name="cost" class="border border-1 border-gray-400 bg-gray-50
+                                                                    w-full p-4 rounded-md 
+                                                                    focus:outline-none
+                                                                    focus:border-blue-500 
+                                                                    focus:ring
+                                                                    focus:ring-blue-100" placeholder="Cost of Maintenance"
+                                                                    
+                                                                    value="{{ old('cost') }}"
+                                                                    
+                                                                    style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
+                                                                    required
+                                                                    />  
+                                                                                                                                        
+
+                                                                    @error('cost')
+                                                                        <span class="text-red-700 text-sm">
+                                                                            {{$message}}
+                                                                        </span>
+                                                                    @enderror
+                            
+                    </div><!-- end of cost //-->
+
 
 
                     <!-- Requirements //-->

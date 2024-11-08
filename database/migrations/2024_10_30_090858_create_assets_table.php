@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('userlocation_id')->references('id')->on('user_locations')->onDelete('cascade');
             $table->string('purchase_date')->nullable();
             $table->string('supplier')->nullable();
-            $table->decimal('cost', 16, 2)->nullable();
+            $table->string('cost')->nullable();
             $table->string('life_span')->nullable();
             $table->string('depreciation_rate')->nullable();
             $table->string('disposal_date')->nullable();

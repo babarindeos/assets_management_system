@@ -55,7 +55,9 @@
                                     </td>
 
                                     <td>
-                                        {{ $asset->cost }}
+                                        @if($asset->cost!='')
+                                            {{ $asset->cost }}
+                                        @endif
                                     </td>
 
                                     <td>
@@ -90,7 +92,7 @@
             <section class="flex flex-col w-[95%] md:w-[95%] mx-auto px-4">
                 <div class="flex flex-row border-0 justify-center 
                             text-2xl font-semibold text-gray-300 py-8">
-                        There is currently no Document
+                        There is currently no Asset
                 </div>
             </section>
         @endif

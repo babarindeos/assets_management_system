@@ -46,8 +46,26 @@
                     </tr>
 
                     <tr class="border-b">
+                        <td width="25%" class="py-4 font-semibold">Service Provider</td>
+                        <td>{{ $workorder->service_provider->provider_name }}</td>
+                    </tr>
+
+                    
+
+                    <tr class="border-b">
                         <td width="25%" class="py-4 font-semibold">Scheduled Date </td>
                         <td>{{ $workorder->scheduled_date_time }}</td>
+                    </tr>
+
+                    <tr class="border-b">
+                        <td width="25%" class="py-4 font-semibold">Duration </td>
+                        <td>{{ $workorder->duration }}</td>
+                    </tr>
+
+
+                    <tr class="border-b">
+                        <td width="25%" class="py-4 font-semibold">Cost</td>
+                        <td>{{ $workorder->cost }}</td>
                     </tr>
 
                     <tr class="border-b">
