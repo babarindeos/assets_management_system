@@ -46,6 +46,10 @@ use App\Http\Controllers\Admin\Admin_ServiceProviderController;
 
 use App\Http\Controllers\Admin\Admin_MaintenanceHistoryController;
 
+use App\Http\Controllers\Admin\Admin_VendorController;
+
+use App\Http\Controllers\Admin\Admin_ProcurementController;
+
 
 
 use App\Http\Controllers\Staff\Staff_AuthController;
@@ -459,6 +463,10 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     Route::get('maintenance/history', [Admin_MaintenanceHistoryController::class, 'index'])->name('admin.maintenance.history');
 
     Route::get('maintenance/service_providers', [Admin_ServiceProviderController::class, 'index'])->name('admin.maintenance.service_providers.index');
+
+    Route::get('procurement/vendors', [Admin_VendorController::class, 'index'])->name('admin.procurements.vendors.index');
+
+    Route::get('procurement/purchase_requests', [Admin_ProcurementController::class, 'index'])->name('admin.procurements.purchase_requests.index');
 });
 
 

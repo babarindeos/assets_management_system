@@ -80,10 +80,10 @@
                                 </button>
                                 <!-- Sub-menu -->
                                 <div class="absolute hidden group-hover:block bg-white text-gray-800 mt-0 py-2 shadow-lg w-[200%]">
-                                    <a href="" class="flex flex-row px-4 py-2 
+                                    <a href="{{ route('admin.procurements.purchase_requests.index') }}" class="flex flex-row px-4 py-2 
                                                                                             hover:bg-gray-200 hover:border-l-yellow-500 hover:border-l-4 pr-8 
                                                                                             border-b border-gray-300">Purchase Requests</a>
-                                    <a href="" class="flex flex-row px-4 py-2 hover:bg-gray-200  
+                                    <a href="{{ route('admin.procurements.vendors.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200  
                                                                                             hover:border-l-yellow-500 hover:border-l-4 
                                                                                             border-b border-gray-300">Vendors</a>
                                     <a href="" class="flex flex-row px-4 py-2 
@@ -145,8 +145,8 @@
                     </button>
                     <!-- Sub-menu for Mobile -->
                     <div class="hidden bg-slate-50 rounded-md" id="procurement-sub-menu-mobile">
-                        <a href="" class="block px-4 py-2 hover:bg-gray-200">Purchase Requests</a>
-                        <a href="" class="block px-4 py-2 hover:bg-gray-200">Vendors</a>
+                        <a href="{{ route('admin.procurements.purchase_requests.index') }}" class="block px-4 py-2 hover:bg-gray-200">Purchase Requests</a>
+                        <a href="{{ route('admin.procurements.vendors.index') }}" class="block px-4 py-2 hover:bg-gray-200">Vendors</a>
                         <a href="" class="flex flex-row px-4 py-2 hover:bg-gray-200">Procurement History</a>
                     </div>
                 </div>
