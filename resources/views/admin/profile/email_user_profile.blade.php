@@ -47,18 +47,7 @@
                                             {{ $userprofile->user->profile->designation}}, {{ $userprofile->user->staff->fileno}}
                                     </div>                            
                             </div>
-
-
-                            <div class="py-4 mx-[10%] md:mx-0">
-                                    <div>
-                                            {{ $organ->name}} ({{ $organ->code}})
-                                    </div>
-                                    <div>
-                                            {{ $userprofile->segment->name }} 
-                                    </div>                            
-                            </div>
-
-
+        
                             <div class="py-4 mx-[10%] md:mx-0">
                                     <div>
                                             {{ $userprofile->user->email }}
@@ -67,6 +56,10 @@
                                             {{ $userprofile->user->profile->phone}}
                                     </div>
 
+                            </div>
+
+                            <div class="py-4 mx-[10%] md:mx-0">
+                                                           
                             </div>
                     </div>
                 </section>

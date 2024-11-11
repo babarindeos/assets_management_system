@@ -1,4 +1,4 @@
-<x-staff-layout>
+<x-admin-layout>
     <div class="flex flex-col w-[95%] mx-auto">
         <!-- page header //-->
         <section class="flex flex-col md:w-full py-1 mt-6 px-4 border-red-900 mx-auto">
@@ -14,7 +14,7 @@
 
          <!-- Search //-->
          <Section class="border-0 border-red-600 w-[95%] md:w-1/2 mx-auto">
-                <form method="GET" action="{{ route('staff.maintenance.history')}}" class="flex flex-row border-0  border-blue-900 w-full space-x-1">
+                <form method="GET" action="{{ route('admin.maintenance.history')}}" class="flex flex-row border-0  border-blue-900 w-full space-x-1">
                         @csrf
 
 
@@ -83,7 +83,7 @@
                                         <th width='15%' class="font-semibold py-2 text-left">Priority Level</th>                               
                                         <th width='20%' class="font-semibold py-2 text-left">Assigned Personnel</th>
                                         <th width='15%' class="font-semibold py-2 text-left">Scheduled Date</th>                                
-                                        <th width='15%' class="font-semibold py-2 text-center">Submitted</th>                                
+                                        <th width='15%' class="font-semibold py-2 text-left">Submitted By</th>                                
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -131,19 +131,7 @@
 
                                             
                                             <td>
-                                                        <div class="flex flex-col md:flex-row justify-center items-center space-y-1 md:space-x-1 md:space-y-0">
-                                                            <span class="text-sm">
-                                                                <a class="hover:bg-blue-500 bg-blue-400 text-white rounded-md 
-                                                                        px-4 py-1 text-xs" href="{{ route('staff.maintenance.workorders.edit',['workorder'=>$workorder->id]) }}">Edit</a>
-                                                            </span>
-                                                            <span> 
-                                                                <a class="hover:bg-red-500 bg-red-400 text-white rounded-md 
-                                                                        px-4 py-1 text-xs"
-                                                                        href="{{ route('staff.maintenance.workorder.confirm_delete', ['workorder'=>$workorder->id]) }}">Delete</a>
-                                                            </span>
-                                                        </div>
-                                                
-
+                                                        {{ $workorder->user->staff->surname}} {{ $workorder->user->staff->firstname}}
 
                                             </td>
                                             
@@ -173,4 +161,4 @@
 
 
 
-</x-staff-layout>
+</x-admin-layout>

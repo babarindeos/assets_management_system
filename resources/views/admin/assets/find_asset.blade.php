@@ -72,7 +72,7 @@
                         <!-- button //-->
                         <div class="flex flex-col justify-center">
                             <button type="submit" class="border border-1 bg-green-600 py-4 px-8 text-white 
-                                     hover:bg-green-500 rounded-md text-lg" style="font-family:'Lato';font-weight:500;">
+                                     hover:bg-green-500 rounded-tr-md rounded-br-md text-lg" style="font-family:'Lato';font-weight:500;">
                                      <i class="fa-solid fa-magnifying-glass text-md"></i> 
                             </button>
                         </div>

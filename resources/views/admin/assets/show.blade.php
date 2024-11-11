@@ -59,6 +59,16 @@
                     </tr>
 
                     <tr class="border-b">
+                        <td width="25%" class="py-4 font-semibold">Name of Custodian</td>
+                        <td> {{ $asset->user->surname }} {{ $asset->user->firstname }}</td>
+                    </tr>
+
+                    <tr class="border-b">
+                        <td width="25%" class="py-4 font-semibold">Department of Custodian</td>
+                        <td> {{ $asset->location->location->organ->name}} </td>
+                    </tr>
+
+                    <tr class="border-b">
                         <td width="25%" class="py-4 font-semibold">Rate and Method of Depreciation</td>
                         <td>{{ $asset->depreciation_rate }}</td>
                     </tr>

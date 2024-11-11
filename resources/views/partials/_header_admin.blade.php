@@ -66,7 +66,9 @@
                                     <a href="{{ route('admin.maintenance.workorders.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 
                                                                                             hover:border-l-yellow-500 hover:border-l-4 
                                                                                             border-b border-gray-300">Work Order</a>
-                                    <a href="" class="flex flex-row px-4 py-2 hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Maintenance History</a>
+                                    <a href="{{ route('admin.maintenance.service_providers.index') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200 hover:border-l-yellow-500 hover:border-l-4 
+                                                                                            border-b border-gray-300">Service Providers</a>
+                                    <a href="{{ route('admin.maintenance.history') }}" class="flex flex-row px-4 py-2 hover:bg-gray-200  hover:border-l-yellow-500 hover:border-l-4 pr-8">Maintenance History</a>
   
                                 </div>
                             </div>
@@ -132,7 +134,8 @@
                     <div class="hidden bg-slate-50 rounded-md" id="maintenance-sub-menu-mobile">
                         <a href="{{ route('admin.maintenance.maintenance_schedule.index') }}" class="block px-4 py-2 hover:bg-gray-200">Maintenance Schedule</a>
                         <a href="{{ route('admin.maintenance.workorders.index') }}" class="block px-4 py-2 hover:bg-gray-200">Work Order</a>
-                        <a href="" class="flex flex-row px-4 py-2 hover:bg-gray-200">Maintenance History</a>
+                        <a href="{{ route('admin.maintenance.service_providers.index') }}" class="block px-4 py-2 hover:bg-gray-200">Service Providers</a>
+                        <a href="{{ route('admin.maintenance.history') }}" class="block px-4 py-2 hover:bg-gray-200">Maintenance History</a>
                     </div>
                 </div>
 

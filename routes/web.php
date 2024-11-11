@@ -42,6 +42,10 @@ use App\Http\Controllers\Admin\Admin_MaintenanceScheduleController;
 
 use App\Http\Controllers\Admin\Admin_WorkOrderController;
 
+use App\Http\Controllers\Admin\Admin_ServiceProviderController;
+
+use App\Http\Controllers\Admin\Admin_MaintenanceHistoryController;
+
 
 
 use App\Http\Controllers\Staff\Staff_AuthController;
@@ -63,6 +67,9 @@ use App\Http\Controllers\Staff\Staff_MaintenanceScheduleController;
 
 use App\Http\Controllers\Staff\Staff_WorkOrderController;
 use App\Http\Controllers\Staff\Staff_MaintenanceHistoryController;
+
+use App\Http\Controllers\Staff\Staff_VendorController;
+use App\Http\Controllers\Staff\Staff_ProcurementController;
 
 use App\Http\Controllers\PDFController;
 
@@ -193,6 +200,28 @@ Route::prefix('staff')->middleware(['auth', 'staff'])->group(function(){
     Route::post('maintenance/workorders/{workorder}/update',[Staff_WorkOrderController::class, 'update'])->name('staff.maintenance.workorders.update');
     Route::get('maintenance/workorders/{workorder}/confirm_delete',[Staff_WorkOrderController::class, 'confirm_delete'])->name('staff.maintenance.workorder.confirm_delete');
     Route::post('maintenance/workorders/{workorder}/delete',[Staff_WorkOrderController::class, 'destroy'])->name('staff.maintenance.workorders.delete');
+
+
+    // Vendor
+    Route::get('procurement/vendors', [Staff_VendorController::class, 'index'])->name('staff.procurements.vendors.index');
+    Route::get('procurement/vendors/create', [Staff_VendorController::class, 'create'])->name('staff.procurements.vendors.create');
+    Route::post('procurement/vendors/store', [Staff_VendorController::class, 'store'])->name('staff.procurements.vendors.store');
+    Route::get('procurement/vendors/{vendor}/edit', [Staff_VendorController::class, 'edit'])->name('staff.procurements.vendors.edit');
+    Route::post('procurement/vendors/{vendor}/update', [Staff_VendorController::class, 'update'])->name('staff.procurements.vendors.update');
+    Route::get('procurement/vendors/{vendor}/confirm_delete', [Staff_VendorController::class, 'confirm_delete'])->name('staff.procurements.vendors.confirm_delete');
+    Route::post('procurement/vendors/{vendor}/delete', [Staff_VendorController::class, 'destroy'])->name('staff.procurements.vendors.delete');
+
+
+    // procurement requeststaff.procurements.purchase_requests.index
+    Route::get('procurement/purchase_requests', [Staff_ProcurementController::class, 'index'])->name('staff.procurements.purchase_requests.index');
+    Route::get('procurement/purchase_requests/create', [Staff_ProcurementController::class, 'create'])->name('staff.procurements.purchase_requests.create');
+    Route::post('procurement/purchase_requests/store', [Staff_ProcurementController::class, 'store'])->name('staff.procurements.purchase_requests.store');
+    Route::get('procurement/purchase_requests/{purchase_request}/edit', [Staff_ProcurementController::class, 'edit'])->name('staff.procurements.purchase_requests.edit');
+    Route::post('procurement/purchase_requests/{purchase_request}/update', [Staff_ProcurementController::class, 'update'])->name('staff.procurements.purchase_requests.update');
+    Route::get('procurement/purchase_requests/{purchase_request}/confirm_delete', [Staff_ProcurementController::class, 'confirm_delete'])->name('staff.procurements.purchase_requests.confirm_delete');
+    Route::post('procurement/purchase_requests/{purchase_request}/delete', [Staff_ProcurementController::class, 'destroy'])->name('staff.procurements.purchase_requests.delete');
+
+
 });
 
 
@@ -426,6 +455,10 @@ Route::prefix('admin')->middleware(['auth','admin'])->group(function(){
     Route::get('maintenance/maintenace_schedule', [Admin_MaintenanceScheduleController::class, 'index'])->name('admin.maintenance.maintenance_schedule.index');
     
     Route::get('maintenance/workorders', [Admin_WorkOrderController::class, 'index'])->name('admin.maintenance.workorders.index');
+    Route::get('maintenance/workorders/{workorder}/show', [Admin_WorkOrderController::class, 'show'])->name('admin.maintenance.workorders.show');
+    Route::get('maintenance/history', [Admin_MaintenanceHistoryController::class, 'index'])->name('admin.maintenance.history');
+
+    Route::get('maintenance/service_providers', [Admin_ServiceProviderController::class, 'index'])->name('admin.maintenance.service_providers.index');
 });
 
 

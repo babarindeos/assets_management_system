@@ -1,4 +1,4 @@
-<x-staff-layout>
+<x-admin-layout>
 
     <div class="flex flex-col container mx-4 border border-0 md:mx-auto">
         <section class="border-b border-gray-200 py-4 mt-4">
@@ -73,6 +73,11 @@
                         <td>{{ $workorder->requirements }}</td>
                     </tr>
 
+                    <tr class="border-b">
+                        <td width="25%" class="py-4 font-semibold">Submitted By</td>
+                        <td>{{ $workorder->user->staff->surname }} {{ $workorder->user->staff->firstname }}</td>
+                    </tr>
+
                     
 
 
@@ -82,4 +87,4 @@
         </section>
     </div>
     
-</x-staff-layout>
+</x-admin-layout>

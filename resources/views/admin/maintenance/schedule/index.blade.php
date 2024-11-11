@@ -31,7 +31,7 @@
                              <!-- button //-->
                             <div class="flex flex-col justify-center border ">
                                 <button type="submit" class="border border-1 bg-green-600 py-2 px-8 text-white 
-                                        hover:bg-green-500 rounded-md text-lg" style="font-family:'Lato';font-weight:500;">
+                                        hover:bg-green-500 rounded-tr-md rounded-br-md text-lg" style="font-family:'Lato';font-weight:500;">
                                         <i class="fa-solid fa-magnifying-glass text-md"></i> 
                                 </button>
                             </div>
@@ -49,8 +49,9 @@
                                 <th width='5%' class="text-center font-semibold py-2">SN</th>
                                 <th width='15%' class="font-semibold py-2 text-left">Item</th>
                                 <th width='10%' class="font-semibold py-2 text-left">Frequency</th>
-                                <th width='25%' class="font-semibold py-2 text-left">Description</th>                                
-                                <th width='15%' class="font-semibold py-2 text-left">Date</th>                                
+                                <th width='25%' class="font-semibold py-2 text-left">Description</th>
+                                <th width='25%' class="font-semibold py-2 text-left">Submitted By</th>                                
+                                <th width='15%' class="font-semibold py-2 text-left">Date Submitted</th>                                
                             </tr>
                         </thead>
                         <tbody>
@@ -79,6 +80,12 @@
 
                                     <td>
                                             {{ $schedule->description }}
+                                    </td>
+
+                                    <td>
+                                            <a class="underline" href="{{ route('admin.profile.email_user_profile', ['email'=>$schedule->user->email]) }}">
+                                                {{ $schedule->user->staff->surname }} {{ $schedule->user->staff->firstname }}
+                                            </a> 
                                     </td>
 
                                     <td>

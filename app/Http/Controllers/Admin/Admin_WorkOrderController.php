@@ -15,5 +15,10 @@ class Admin_WorkOrderController extends Controller
         $workorders = WorkOrder::orderBy('id', 'desc')->paginate(20);
         return view('admin.maintenance.work_orders.index', compact('workorders'));
     }
+
+    public function show(WorkOrder $workorder)
+    {
+        return view('admin.maintenance.work_orders.show', compact('workorder'));
+    }
    
 }

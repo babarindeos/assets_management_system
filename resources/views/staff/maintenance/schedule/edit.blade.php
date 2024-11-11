@@ -100,8 +100,7 @@
                                                                 focus:outline-none
                                                                 focus:border-blue-500 
                                                                 focus:ring
-                                                                focus:ring-blue-100" 
-                                                                
+                                                                focus:ring-blue-100"                                                                
                                                                 
                                                                 
                                                                 style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
