@@ -16,5 +16,9 @@ class Location extends Model
         return $this->belongsTo(Organ::class, 'organ_id', 'id');
     }
 
+    public function users()
+    {
+        return $this->hasMany(UserLocation::class, 'location_id', 'id');
+    }
     
 }

@@ -20,4 +20,9 @@ class UserLocation extends Model
     {
         return $this->belongsTo(Location::class, 'location_id', 'id');
     }
+
+    public function assets()
+    {
+        return $this->hasMany(Asset::class, "userlocation_id", 'id');
+    }
 }

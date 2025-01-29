@@ -55,7 +55,7 @@
                                 >
                         <thead>
                             <tr class="bg-gray-200">
-                                <th width="10%" class="text-center font-semibold py-2 w-16">SN</th>                                
+                                <th width="10%" class="text-center font-semibold py-4 w-16">SN</th>                                
                                 <th width="40%" class="font-semibold py-2 text-left">Full names</th>                    
                                 <th width="30%" class="font-semibold py-2 text-left">Organ</th>
                                 <th width="20%" class="border font-semibold py-2 text-center">Action</th>
@@ -72,15 +72,14 @@
 
                                 @foreach ($location_users as $location_user)
                                     <tr class="border border-b border-gray-200 ">
-                                        <td class='text-center py-4'>{{ ++$counter }}.</td>                                       
+                                        <td class='text-center py-8'>{{ ++$counter }}.</td>                                       
                                         <td>
                                             <a class="hover:underline" href="{{ route('admin.profile.email_user_profile',['email'=>$location_user->user->email]) }}">
                                                 {{ $location_user->user->staff->surname }} {{ $location_user->user->staff->firstname }}</a>
                                             
 
-                                            <div class="flex flex-row text-sm space-x-4">
-                                                <div>Locations ()</div>   
-                                                <div>Assets ()</div>                                                
+                                            <div class="flex flex-row text-sm space-x-4"> 
+                                                <div>Assets ({{ $location_user->assets->count() }})</div>                                                
                                             </div>
 
                                         </td>

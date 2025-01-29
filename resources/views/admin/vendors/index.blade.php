@@ -17,7 +17,7 @@
                                 >
                         <thead>
                             <tr class="bg-gray-200">
-                                <th width='5%' class="text-center font-semibold py-2">SN</th>
+                                <th width='5%' class="text-center font-semibold py-4">SN</th>
                                 <th width='25%' class="font-semibold py-2 text-left">Business Name</th>
                                 <th width='15%' class="font-semibold py-2 text-left">Contact Person</th>
                                 <th width='10%'class="font-semibold py-2 text-left">Contact Phone</th>
@@ -32,7 +32,7 @@
 
                                 @foreach ($vendors as $vendor)
                                 <tr class="border border-b border-gray-200">
-                                    <td class='text-center py-4'>{{ ++$counter }}.</td>
+                                    <td class='text-center py-8'>{{ ++$counter }}.</td>
                                     <td>
                                         
                                             {{ $vendor->business_name }} 

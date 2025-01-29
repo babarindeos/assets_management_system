@@ -34,7 +34,7 @@
                         <table class="table-auto border-collapse border border-1 border-gray-200">
                             <thead>
                                 <tr class="bg-gray-200">
-                                    <th width="5%" class="text-center font-semibold py-2 w-16">SN</th>
+                                    <th width="5%" class="text-center font-semibold py-4 w-16">SN</th>
                                     <th width="30%" class="font-semibold py-2 text-start">Category Type</th>               
                                     <th width="35%" class="font-semibold py-2 text-start">Category Name</th>    
                                     <th width="10%" class="font-semibold py-2 text-start">Category Code</th>  
@@ -48,7 +48,7 @@
 
                                 @foreach ($admin_categories as $category)
                                     <tr class="border border-b border-gray-200">
-                                        <td class="text-center py-4"> {{ ++$counter }}. </td>
+                                        <td class="text-center py-8"> {{ ++$counter }}. </td>
                                         <td>
                                                 {{ $category->admin_category_type->name}}
                                         </td>

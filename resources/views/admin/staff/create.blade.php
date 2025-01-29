@@ -164,7 +164,7 @@
                                                                     value="{{ old('middlename') }}"
                                                                     
                                                                     style="font-family:'Lato';font-size:16px;font-weight:500;"                                                                     
-                                                                    required
+                                                                    
                                                                     />  
                                                                                                                                         
 

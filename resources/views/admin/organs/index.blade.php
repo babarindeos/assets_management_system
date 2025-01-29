@@ -52,7 +52,7 @@
                                 >
                         <thead>
                             <tr class="bg-gray-200">
-                                <th width="5%" class="text-center font-semibold py-2 w-16">SN</th>                                
+                                <th width="8%" class="text-center font-semibold py-4">SN</th>                                
                                 <th width="55%" class="font-semibold py-2 text-left">Name</th>                    
                                 <th width="10%" class="font-semibold py-2 text-left">Code</th>
                                 <th width="10%" class="font-semibold py-2 text-left">Location Type</th>
@@ -69,15 +69,15 @@
 
                                 @foreach ($organs as $organ)
                                     <tr class="border border-b border-gray-200 ">
-                                        <td class='text-center py-4'>{{ ++$counter }}.</td>                                       
+                                        <td class='text-center py-8'>{{ ++$counter }}.</td>                                       
                                         <td>
-                                            <a class="hover:underline" href="{{ route('admin.organs.show',['organ'=>$organ->id]) }}">
-                                                {{ $organ->name }}</a>
+                                            
+                                                {{ $organ->name }}
                                             
 
                                             <div class="flex flex-row text-sm space-x-4">
-                                                <div>Assets ()</div>
-                                                <div>Users ()</div>
+                                                <div>Locations ({{$organ->locations->count()}})</div>
+                                                
                                             </div>
 
                                         </td>

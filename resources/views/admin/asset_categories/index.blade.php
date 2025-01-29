@@ -44,9 +44,9 @@
                                 >
                         <thead>
                             <tr class="bg-gray-200">
-                                <th width="10%" class="text-center font-semibold py-2 w-16">SN</th>
+                                <th width="10%" class="text-center font-semibold py-4">SN</th>
 
-                                <th width="70%" class="font-semibold py-2 text-left">Name</th>                  
+                                <th width="60%" class="font-semibold py-2 text-left">Name</th>                  
                                 
                                 <th class="font-semibold py-2 text-center">Action</th>
                             </tr>
@@ -58,13 +58,14 @@
                             
                             @foreach($categories as $category)
                                 <tr class="border border-b border-gray-200 ">
-                                    <td class='text-center py-4'>{{ ++$counter }}.</td>
+                                    <td class='text-center py-8'>{{ ++$counter }}.</td>
                                     <td>
-                                        
-                                        {{ $category->name }}
+                                        <a class='hover:underline' href="{{ route('admin.assets.categories.show', ['category'=>$category->id]) }}">
+                                            {{ $category->name }}
+                                        </a>
                                         
                                         <div class="flex text-sm">
-                                            <div>Assets ()</div>                                          
+                                            <div>Assets ({{ $category->assets->count() }})</div>                                          
                                             
                                         </div>
                                     

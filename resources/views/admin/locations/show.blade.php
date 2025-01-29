@@ -55,14 +55,35 @@
                                 >
                         <thead>
                             <tr class="bg-gray-200">
-                                <th width="10%" class="text-center font-semibold py-2 w-16">SN</th>                                
-                                <th width="60%" class="font-semibold py-2 text-left">Item</th>                    
-                                <th width="15%" class="font-semibold py-2 text-left">Category</th>
-                                <th width="15%" class="font-semibold py-2 text-left">Quantity</th>
+                                <th width="10%" class="text-center font-semibold py-2 w-16">SN</th>  
+                                <th width="10%" class="font-semibold py-2 text-left">Identifier</th>                                
+                                <th width="40%" class="font-semibold py-2 text-left">Item</th>                    
+                                <th width="20%" class="font-semibold py-2 text-left">Category</th>
+                                <th width="20%" class="font-semibold py-2 text-left">Life Span</th>
                                 
                             </tr>
                         </thead>
-                        
+                        <tbody>
+                            @php
+                                $counter = 0;
+                            @endphp
+
+                            @foreach($location->users as $user)
+                                @foreach($user->assets as $asset)
+                                     <tr class="border border-b border-gray-200 ">
+                                        <td class='text-center py-8'>{{ ++$counter }}.</td>   
+                                        <td>
+                                            <a class='underline' href="{{ route('admin.assets.show',['asset'=>$asset->id]) }}">
+                                                {{ $asset->uuid }}
+                                            </a>
+                                        </td>                                    
+                                        <td>{{ $asset->item }}</td>
+                                        <td>{{ $asset->category->name }} </td>
+                                        <td>{{ $asset->life_span }}</td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
+                        </tbody>                       
                                 
                     </table>
 
